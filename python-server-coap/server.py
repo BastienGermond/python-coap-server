@@ -18,7 +18,7 @@ class LedResource(resource.Resource):
 
     async def render_get(self, request):
         request = request
-        response = bytes([1 if self.led else 0])
+        response = b'on\0' if self.led else b'off\0'
         return aiocoap.Message(payload=response)
 
     async def render_put(self, request):
