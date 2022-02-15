@@ -22,8 +22,8 @@ class LedResource(resource.Resource):
         return aiocoap.Message(payload=response)
 
     async def render_put(self, request):
-        print(f'PUT payload {request.payload}')
         self.led = not self.led
+        print(f"PUT payload `{request.payload}` <STATE CHANGED>: {self.led}")
         return aiocoap.Message(code=Code.CHANGED)
 
 
